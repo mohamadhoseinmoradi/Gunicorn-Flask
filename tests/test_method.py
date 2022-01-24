@@ -10,3 +10,4 @@ def method_test():
         response = test_client.get('/tree')
     #assert response.get_data == "asghaaar"
     assert response.status_code == 200
+
