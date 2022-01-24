@@ -1,8 +1,6 @@
 import sys
-sys.path.insert(1, '/home/mdmd/PYTHON/python/')
+sys.path.insert(1, '/home/mdmd/PYTHON/flask-app/')
 
-from mamadmath.jam import jamkon
-from mamadmath.zarb import zarbkon
+from application.application import myapp
 
-print (jamkon(1,2,3))
-print (zarbkon(3,4,2))
+print (myapp())
