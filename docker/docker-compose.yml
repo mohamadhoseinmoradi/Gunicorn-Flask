@@ -4,4 +4,4 @@ services:
     image: guni:1
     build:
       context: .
-      dockerfile: ./docker/app/Dockerfile
+      dockerfile: ./app/Dockerfile
