@@ -1,1 +1,1 @@
-a simple web server using flask
+a Gunicorn/Flask applicaion on kubernetes to serve web requets.
