@@ -1,0 +1,15 @@
+.*
+*.md
+*.sh
+docker*
+Docker*
+kubernetes
+application/tests
+**/__pycache__
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+env
+*.log
+.pytest_cache
