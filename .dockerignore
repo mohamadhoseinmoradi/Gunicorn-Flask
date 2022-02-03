@@ -3,7 +3,7 @@
 *.sh
 docker*
 Docker*
-kubernetes
+helm
 application/tests
 **/__pycache__
 __pycache__
