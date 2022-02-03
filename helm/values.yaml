@@ -8,14 +8,13 @@ deployment:
     name: nginx
     repository: nginx
     pullPolicy: IfNotPresent
-
-resources:
-  requests:
-    memory: "128Mi"
-    cpu: "500m"
-  limits:
-    memory: "256Mi"
-    cpu: "1"
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "500m"
+    limits:
+      memory: "256Mi"
+      cpu: "1"
   
 # Service Values
 service:
