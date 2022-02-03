@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .values.service.meta_name }}
+  name: {{ .Values.service.metaName }}
 spec:
   type: ClusterIP
   selector:
-    app: {{ .values.deployment.app_name }}
+    app: {{ .Values.deployment.appName }}
   ports:
-  - port: {{ .values.service.svc_port }}
+  - port: {{ .Values.service.svcPort }}
     protocol: TCP
-    targetPort: {{ .values.service.target_port }}
+    targetPort: {{ .Values.service.targetPort }}

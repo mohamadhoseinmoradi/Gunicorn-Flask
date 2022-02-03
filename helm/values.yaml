@@ -1,29 +1,31 @@
 # Deployment Values
 deployment:
-  app_name: app
-  meta_name: app-deployment
-  replica_count: 1
+  appName: app
+  metaName: app-deployment
+  replicaCount: 1
+  containerPort: 5000
   image:
-    name: app:0.1
+    name: nginx
     repository: nginx
     pullPolicy: IfNotPresent
-  resources:
-    requests: 
-      memory: "128Mi"
-      cpu: 500m
-    limits:
-      memory: "256Mi"
-      cpu: "1"
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "500m"
+  limits:
+    memory: "256Mi"
+    cpu: "1"
   
 # Service Values
 service:
   type: ClusterIP
-  svc_port: 8080
-  target_port: 5000
-  meta_name: app-svc
+  svcPort: 8080
+  targetPort: 5000
+  metaName: app-svc
 
 # Ingress Values
 ingress:
-  meta_name: app-ingress
+  metaName: app-ingress
   host: chart-example.local
   path: /tree
