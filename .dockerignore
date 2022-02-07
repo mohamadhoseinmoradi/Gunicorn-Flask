@@ -1,8 +1,7 @@
 .*
 *.md
 *.sh
-docker*
-Docker*
+Dockerfile
 helm
 application/tests
 **/__pycache__

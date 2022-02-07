@@ -1,14 +1,15 @@
 FROM python:3.8-slim
 
 WORKDIR /app
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN useradd appuser
 
-COPY --chown=appuser:appgroup requirements.txt .
+
+COPY --chown=appuser requirements.txt .
 RUN \
     pip3 install -U pip \
     && pip3 install -r requirements.txt
 
-COPY --chown=appuser:appgroup . . 
+COPY --chown=appuser . . 
 EXPOSE 5000
 USER appuser
 
