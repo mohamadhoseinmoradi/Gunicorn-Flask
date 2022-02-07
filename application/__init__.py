@@ -1,4 +1,5 @@
 from flask import Flask
+
 from application.config.config import config
 
 
