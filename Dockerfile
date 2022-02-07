@@ -3,7 +3,6 @@ FROM python:3.8-slim
 WORKDIR /app
 RUN useradd appuser
 
-
 COPY --chown=appuser requirements.txt .
 RUN \
     pip3 install -U pip \
