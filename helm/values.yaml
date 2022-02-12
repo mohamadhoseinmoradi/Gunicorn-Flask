@@ -28,3 +28,7 @@ ingress:
   metaName: app-ingress
   host: chart-example.local
   path: /tree
+
+# config and secret
+secret:
+  name: flask-config-prod

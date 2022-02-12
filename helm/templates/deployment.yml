@@ -20,6 +20,9 @@ spec:
         imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.deployment.containerPort }}
+        envFrom:
+          - secretRef:
+              name: {{ .Values.secret.name }}
         resources:
           requests:
             memory: {{ .Values.deployment.resources.requests.memory }}
