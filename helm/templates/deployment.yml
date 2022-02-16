@@ -15,18 +15,31 @@ spec:
         app: {{ .Values.deployment.appName }}
     spec:
       containers:
-      - name: {{ .Values.deployment.appName }}
-        image: {{ .Values.deployment.image.name }}
-        imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
-        ports:
-        - containerPort: {{ .Values.deployment.containerPort }}
-        envFrom:
-          - secretRef:
-              name: {{ .Values.secret.name }}
-        resources:
-          requests:
-            memory: {{ .Values.deployment.resources.requests.memory }}
-            cpu: {{ .Values.deployment.resources.requests.cpu }}
-          limits:
-            memory: {{ .Values.deployment.resources.limits.memory }}
-            cpu: {{ .Values.deployment.resources.limits.cpu }}
+        - name: {{ .Values.deployment.appName }}
+          image: {{ .Values.deployment.image.name }}
+          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.deployment.containerPort }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secret.name }}
+          resources:
+            requests:
+              memory: {{ .Values.deployment.resources.requests.memory }}
+              cpu: {{ .Values.deployment.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.deployment.resources.limits.memory }}
+              cpu: {{ .Values.deployment.resources.limits.cpu }}
+        - name: app-nginx
+          image: nginx:1.18
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+              readOnly: true
+          ports:
+            - containerPort: 8080
+
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-configmap
