@@ -30,16 +30,26 @@ spec:
             limits:
               memory: {{ .Values.deployment.resources.limits.memory }}
               cpu: {{ .Values.deployment.resources.limits.cpu }}
-        - name: app-nginx
-          image: nginx:1.18
-          volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/conf.d
-              readOnly: true
+              
+        ## sidecar container      
+        - name: {{ .Values.sideCar.appName }}
+          image: {{ .Values.sideCar.image }}
+          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           ports:
-            - containerPort: 8080
+            - containerPort: {{ .Values.sideCar.containerPort }}
+          resources:
+            requests:
+              memory: {{ .Values.sideCar.resources.requests.memory }}
+              cpu: {{ .Values.sideCar.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.sideCar.resources.limits.memory }}
+              cpu: {{ .Values.sideCar.resources.limits.cpu }}
+          volumeMounts:
+            - name: {{ .Values.sideCar.volumeMount.name }}
+              mountPath: {{ .Values.sideCar.volumeMount.mountPath }}
+              readOnly: {{ .Values.sideCar.volumeMount.readOnly }}
 
       volumes:
-        - name: nginx-config
+        - name: {{ .Values.sideCar.volume.name }}
           configMap:
-            name: nginx-configmap
+            name:  {{ .Values.sideCar.volume.configMapName }}

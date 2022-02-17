@@ -5,8 +5,8 @@ deployment:
   replicaCount: 1
   containerPort: 5000
   image:
-    name: nginx
-    repository: nginx
+    name: mdmddockergft/app:latest
+    #repository: nginx
     pullPolicy: IfNotPresent
   resources:
     requests:
@@ -15,7 +15,29 @@ deployment:
     limits:
       memory: "256Mi"
       cpu: "1"
-  
+
+# sidecar container 
+sideCar:
+  appName: app-sidecar
+  image: nginx:1.18
+  containerPort: 8080
+  pullPolicy: IfNotPresent
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "500m"
+    limits:
+      memory: "256Mi"
+      cpu: "1"
+  volumeMount:
+    name: sidecar-config-volume
+    mountPath: /etc/nginx/conf.d
+    readOnly: True 
+  volume:
+    name: sidecar-config-volume
+    configMapName: sidecar-configmap
+
+
 # Service Values
 service:
   type: ClusterIP
