@@ -14,6 +14,11 @@ fi
 echo "building the artifact ..."
 docker build --file Dockerfile --tag  $image_name:$image_tag .
 echo "Done"
+
+echo "running pytest ..."
+pytest -v
+echo "Done"
+
 echo "tagging and pushing the artifact ..."
 docker tag $image_name:$image_tag mdmddockergft/$image_name:$image_tag
 docker push mdmddockergft/$image_name:$image_tag
