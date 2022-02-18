@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: sidecar-configmap
 data:
-  default.conf: |
+  reverse_proxy.conf: |
     server {
        listen       8080;
        server_name  localhost;
