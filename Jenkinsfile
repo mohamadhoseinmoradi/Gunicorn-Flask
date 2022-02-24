@@ -6,7 +6,7 @@ pipeline{
 
         stage("Build"){
             steps {
-                sh "date +%T"
+                echo "hello"
                 }
             }
         }
