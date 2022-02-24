@@ -8,8 +8,8 @@ pipeline{
 
         stage("Build"){
             steps {
-                echo $params.IMAGE
-                echo $params.TAG
+                echo "$params.IMAGE"
+                echo "$params.TAG"
                 }
             }
         }
