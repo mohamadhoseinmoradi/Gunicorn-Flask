@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-        string(name: "IMAGE", defaultValue: "ssbostan", trim: true, description: "IMAGE name to build")
+        string(name: "IMAGE", description: "IMAGE name to build")
         string(name: "TAG", defaultValue: "latest", description: "image version/tag to build")
     }
     stages{
