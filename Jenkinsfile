@@ -4,7 +4,8 @@ pipeline{
 
         stage("Build"){
             steps {
-                echo "ls -la"
+                echo %NAME%
+                echo %TAG%
                 }
             }
         }
