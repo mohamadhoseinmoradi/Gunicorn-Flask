@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-/*         stage("deploy confirmation") {
+         stage("deploy confirmation") {
             options{
                 timeout(time: 5, unit: "MINUTES")
             }
@@ -57,7 +57,7 @@ pipeline {
             }
         }
 
-        stage("deploy to kubernetes") {
+/*         stage("deploy to kubernetes") {
             steps {
                 sh "something to be done here"
             }
