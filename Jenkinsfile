@@ -62,7 +62,6 @@ pipeline {
                 sh "helm install app helm/"
             }
         }
-
     }
 
     post {
