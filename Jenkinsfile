@@ -18,11 +18,4 @@ pipeline{
                 sh "pytest -v"
             }
         }
-
-//        stage("push to artifactory"){
-//            steps{
-//               sh "docker tag $image_name:$image_tag mdmddockergft/$image_name:$image_tag"
-//                sh "docker push mdmddockergft/$image_name:$image_tag"
-//           }
-//        }
     }
