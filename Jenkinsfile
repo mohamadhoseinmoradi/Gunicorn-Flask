@@ -53,7 +53,7 @@ pipeline {
                 timeout(time: 5, unit: "MINUTES")
             }
             steps {
-                input messsage: "do you want to continue with deployment?", ok: "Confirm"
+                input message: "do you want to continue with deployment?", ok: "Confirm"
             }
         }
 
