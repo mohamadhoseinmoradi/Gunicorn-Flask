@@ -10,7 +10,7 @@ pipeline{
             steps {
                 echo "$params.IMAGE_NAME"
                 echo "$params.IMAGE_TAG"
-                sh "docker build --file Dockerfile --tag $params.IMAGE_NAME:$params.IMAGE_TAG"
+                sh "docker build --file Dockerfile --tag $params.IMAGE_NAME:$params.IMAGE_TAG ."
                 }
             }
         }
