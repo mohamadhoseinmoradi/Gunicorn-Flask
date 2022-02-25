@@ -11,7 +11,6 @@ pipeline{
                 sh "docker build --file Dockerfile --tag $params.IMAGE_NAME:$params.IMAGE_TAG ."
                 }
             }
-        }
 
         stage("test"){
             steps {
@@ -19,3 +18,4 @@ pipeline{
             }
         }
     }
+}
