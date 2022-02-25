@@ -62,9 +62,8 @@ pipeline {
                 sh "helm install app helm/"
             }
         }
-
     }
-
+    
     post {
         always {
             sh "docker logout"
