@@ -8,10 +8,21 @@ pipeline{
 
         stage("Build"){
             steps {
-                echo "$params.IMAGE_NAME"
-                echo "$params.IMAGE_TAG"
                 sh "docker build --file Dockerfile --tag $params.IMAGE_NAME:$params.IMAGE_TAG ."
                 }
             }
         }
+
+        stage("test"){
+            steps {
+                sh "pytest -v"
+            }
+        }
+
+//        stage("push to artifactory"){
+//            steps{
+//               sh "docker tag $image_name:$image_tag mdmddockergft/$image_name:$image_tag"
+//                sh "docker push mdmddockergft/$image_name:$image_tag"
+//           }
+//        }
     }
