@@ -18,7 +18,7 @@ pipeline {
 
     stages {
 
-        stage("Build") {
+        stage("Docker Build") {
             steps {
                 sh "docker build --file Dockerfile --tag $params.IMAGE_NAME:$params.IMAGE_TAG ."
                 }
@@ -41,14 +41,14 @@ pipeline {
             }
         }
 
-/*        stage("Push Artifacts") {
+        stage("Docker Push Artifacts") {
             steps {
                 sh "docker tag $params.IMAGE_NAME:$params.IMAGE_TAG mdmddockergft/$params.IMAGE_NAME:$params.IMAGE_TAG"
                 sh "docker push mdmddockergft/$params.IMAGE_NAME:$params.IMAGE_TAG"
             }
         }
 
-        stage("deploy confirmation") {
+/*         stage("deploy confirmation") {
             options{
                 timeout(time: 5, unit: "MINUTES")
             }
