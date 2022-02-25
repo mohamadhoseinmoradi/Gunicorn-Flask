@@ -2,7 +2,7 @@ pipeline {
     
     agent any
 
-/*    options {
+    options {
         buildDiscarder(logRotator(numToKeepStr: "20"))
         disableConcurrentBuilds()
     }
@@ -14,32 +14,26 @@ pipeline {
     parameters {
         string(name: "IMAGE_NAME", description: "IMAGE name to build")
         string(name: "IMAGE_TAG", defaultValue: "latest", description: "image version/tag to build")
-        password(name: "TEST_PASSWORD", description: "Sample password parameter")
-*/
+
+
     stages {
 
-/*        stage("Test") {
-            when {
-                environment(name: "ENV", value: "testing")
-    }
-
-        }
         stage("Build") {
             steps {
                 sh "docker build --file Dockerfile --tag $params.IMAGE_NAME:$params.IMAGE_TAG ."
                 }
             }
 
-        stage("Running Tests") {
-            steps {
-                sh "pytest -v"
-            }
-        }
-*/
-        stage ("Docker Login") {
-//            when {
-//                environment(name: "ENV", value: "DEV")
+//        stage("Running Tests") {
+//            steps {
+//                sh "pytest -v"
 //            }
+//        }
+
+        stage ("Docker Login") {
+            when {
+                environment(name: "ENV", value: "DEV")
+            }
             steps {
                 withCredentials([usernamePassword(credentialsId: "dockerhub-credentials", usernameVariable: "USERNAME", passwordVariable: "PASSWORD")]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
