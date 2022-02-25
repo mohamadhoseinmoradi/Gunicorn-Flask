@@ -14,7 +14,7 @@ pipeline {
     parameters {
         string(name: "IMAGE_NAME", description: "IMAGE name to build")
         string(name: "IMAGE_TAG", defaultValue: "latest", description: "image version/tag to build")
-
+    }
 
     stages {
 
