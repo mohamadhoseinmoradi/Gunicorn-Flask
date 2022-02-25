@@ -24,11 +24,11 @@ pipeline {
                 }
             }
 
-//        stage("Running Tests") {
-//            steps {
-//                sh "pytest -v"
-//            }
-//        }
+        stage("Running Tests") {
+            steps {
+                sh "pytest -v"
+            }
+        }
 
         stage ("Docker Login") {
             when {
@@ -57,11 +57,11 @@ pipeline {
             }
         }
 
-/*         stage("deploy to kubernetes") {
+         stage("deploy to kubernetes") {
             steps {
-                sh "something to be done here"
+                sh "helm install app helm/"
             }
         }
-*/
+
     }
 }
